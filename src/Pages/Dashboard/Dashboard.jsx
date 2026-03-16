@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { statsData } from '../data/sampleData';
+import { statsData } from '../../data/sampleData';
 
 function Dashboard() {
   const { t, i18n } = useTranslation();
