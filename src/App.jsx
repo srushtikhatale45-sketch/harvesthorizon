@@ -1,49 +1,26 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Home from './Pages/Home/Home';
-import Dashboard from './Pages/Dashboard/Dashboard';
-
+import Footer from './components/Footer';
+import HomePage from './Pages/HomePage';
+import AboutPage from './Pages/AboutPage';
+import FeaturesPage from './Pages/FeaturesPage';
+import DashboardPage from './Pages/DashboardPage';
 
 function App() {
-  
-
-  const [data, setData] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:3000/api/user', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-            // Add any additional headers as needed
-          }
-          // Include body for POST requests
-          // body: JSON.stringify({ key: 'value' }),
-        })
-
-        const result = await response.json()
-        setData(result)
-      } catch (error) {
-        setError(error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchData()
-  }, [])
   return (
     <Router>
-      <div className="min-h-screen bg-green-50">
+      <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-100">
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-        </Routes>
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/features" element={<FeaturesPage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
+          </Routes>
+        </main>
+        <Footer />
       </div>
     </Router>
   );

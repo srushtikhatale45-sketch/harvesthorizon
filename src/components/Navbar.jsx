@@ -1,79 +1,111 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { logo } from '../assets';
+import { Menu, X, Home, Info, LayoutDashboard, Sparkles } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
-
-function Navbar() {
+import {logoh} from '../assets'; // Ensure you have a logo image in this path
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [logoError, setLogoError] = useState(false);
+  const location = useLocation();
   const { t } = useTranslation();
 
+  const navLinks = [
+    { path: '/', name: t('nav_home'), icon: <Home size={18} /> },
+    { path: '/about', name: t('nav_about'), icon: <Info size={18} /> },
+    { path: '/features', name: t('nav_features'), icon: <Sparkles size={18} /> },
+    { path: '/dashboard', name: t('nav_dashboard'), icon: <LayoutDashboard size={18} /> },
+  ];
+
+  const isActive = (path) => location.pathname === path;
+
   return (
-    <div className='bg-white px-4 sm:px-6 md:px-8 py-3 sm:py-4 fixed w-full z-40 top-0 shadow-md flex justify-between items-center'>
-      <NavLink 
-        to='/' 
-        className='block transition-all duration-300 hover:scale-105 active:scale-95'
-      >
-        <img 
-          src={logo} 
-          alt="Logo" 
-          className='
-            h-12 w-18
-            sm:h-16 sm:w-24
-            md:h-20 md:w-30
-            lg:h-20 lg:w-30
-            xl:h-20 xl:w-30
-            object-contain 
-            transition-all 
-            duration-300
-            drop-shadow-sm
-            hover:drop-shadow-md
-          ' 
-        />
-      </NavLink>
+    <nav className="bg-green-200 shadow-lg sticky top-0 z-50">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="flex justify-between items-center h-16 md:h-20">
+          {/* Logo with Image */}
+          <Link to="/" className="flex items-center space-x-3 group">
+            {/* Logo Image Container */}
+            <div className="relative">
+              {!logoError ? (
+                <img 
+                  src={logoh} // Change this to your logo path
+                  alt="Harvest Horizon"
+                  className="w-10 h-10 md:w-12 md:h-12 object-contain rounded-lg group-hover:scale-105 transition-transform duration-300"
+                  onError={() => setLogoError(true)}
+                />
+              ) : (
+                // Gradient Background with Text as Fallback
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300">
+                  <span className="text-white text-lg md:text-xl font-bold">HH</span>
+                </div>
+              )}
+            </div>
+            
+            {/* Brand Name */}
+            <div className="flex flex-col">
+              <span className="text-lg md:text-xl font-bold bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent">
+                {t('app_name')}
+              </span>
+              <span className="text-xs text-gray-500 hidden md:block">Harvest Horizon</span>
+            </div>
+          </Link>
 
-      <div className='flex items-center gap-2 sm:gap-4 md:gap-6 lg:gap-8'>
-        <NavLink 
-          to='/' 
-          className={({ isActive }) => 
-            `relative text-sm sm:text-base px-3 sm:px-4 py-2 rounded-md transition-all duration-200 
-            hover:bg-gray-100 hover:text-green-600 hover:scale-105
-            active:scale-95
-            ${
-              isActive 
-                ? 'text-green-600 font-semibold bg-green-50 after:absolute after:bottom-0 after:left-4 after:right-4 after:h-0.5 after:bg-green-600 after:rounded-full' 
-                : 'text-gray-700'
-            }`
-          }
-        >
-          {t('home')}
-        </NavLink>
-        
-        <NavLink 
-          to='/Dashboard' 
-          className={({ isActive }) => 
-            `relative text-sm sm:text-base px-3 sm:px-4 py-2 rounded-md transition-all duration-200 
-            hover:bg-gray-100 hover:text-green-600 hover:scale-105
-            active:scale-95
-            ${
-              isActive 
-                ? 'text-green-600 font-semibold bg-green-50 after:absolute after:bottom-0 after:left-4 after:right-4 after:h-0.5 after:bg-green-600 after:rounded-full' 
-                : 'text-gray-700'
-            }`
-          }
-        >
-          {t('Dashboard')}
-        </NavLink>
-        
-        <div className='hover:scale-105 active:scale-95 transition-transform duration-200'>
-          <LanguageSwitcher />
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                  isActive(link.path)
+                    ? 'bg-primary-50 text-primary-600'
+                    : 'text-gray-700 hover:bg-gray-100 hover:text-primary-600'
+                }`}
+              >
+                {link.icon}
+                <span>{link.name}</span>
+              </Link>
+            ))}
+            <LanguageSwitcher />
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="flex items-center space-x-3 md:hidden">
+            <LanguageSwitcher />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-gray-700 p-2 rounded-lg hover:bg-gray-100 transition-colors"
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
-      </div>
 
-      <div className='absolute bottom-0 left-0 w-full h-0.5 bg-gray-200'>
-        <div className='h-full bg-green-600 transition-all duration-150' style={{ width: '0%' }}></div>
+        {/* Mobile Menu */}
+        {isOpen && (
+          <div className="md:hidden py-4 border-t animate-fade-in">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                onClick={() => setIsOpen(false)}
+                className={`flex items-center space-x-3 px-4 py-3 rounded-lg font-medium transition-all duration-300 ${
+                  isActive(link.path)
+                    ? 'bg-primary-50 text-primary-600'
+                    : 'text-gray-700 hover:bg-gray-100'
+                }`}
+              >
+                {link.icon}
+                <span>{link.name}</span>
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
-    </div>
+    </nav>
   );
-}
+};
 
 export default Navbar;
