@@ -6,7 +6,7 @@ const DashboardPage = () => {
   const { t } = useTranslation();
 
   // Power BI Embed URL - Replace with your actual embed URL
-  const powerBIEmbedUrl = "https://app.powerbi.com/reportEmbed?reportId=9611261b-17dc-4fbc-8c57-4ac463ea7682&autoAuth=true&ctid=becad549-3cfb-4feb-9ccb-360ab604b3b7";
+  const powerBIEmbedUrl = "https://app.powerbi.com/reportEmbed?reportId=1c658195-c231-4ca5-9003-793c39adb5d5&autoAuth=true&ctid=becad549-3cfb-4feb-9ccb-360ab604b3b7";
 
   return (
     <div className="bg-gray-50 min-h-screen py-8">
