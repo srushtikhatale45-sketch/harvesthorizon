@@ -5,15 +5,9 @@ import hiTranslations from './locales/hi.json';
 import mrTranslations from './locales/mr.json';
 
 const resources = {
-  en: {
-    translation: enTranslations
-  },
-  hi: {
-    translation: hiTranslations
-  },
-  mr: {
-    translation: mrTranslations
-  }
+  en: { translation: enTranslations },
+  hi: { translation: hiTranslations },
+  mr: { translation: mrTranslations }
 };
 
 i18n

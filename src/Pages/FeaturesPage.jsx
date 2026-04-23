@@ -17,27 +17,25 @@ const FeaturesPage = () => {
     { icon: MapPin, title: t('feature4_title'), description: t('feature4_desc'), delay: 400 },
     { icon: LayoutDashboard, title: t('feature5_title'), description: t('feature5_desc'), delay: 500 },
     { icon: Languages, title: t('feature6_title'), description: t('feature6_desc'), delay: 600 },
-    { icon: DollarSign, title: 'Profit Calculator', description: 'Calculate expected profits based on current market prices and your production costs.', delay: 700 },
-    { icon: Calendar, title: 'Seasonal Alerts', description: 'Get notified about optimal planting and harvesting seasons for different crops.', delay: 800 },
-    { icon: Target, title: 'Demand Forecasting', description: 'Predict market demand for crops to plan your production accordingly.', delay: 900 },
-    { icon: Bell, title: 'Price Alerts', description: 'Set custom price alerts for your crops and get notified when prices reach your target.', delay: 1000 }
+    { icon: DollarSign, title: t('profit_calculator'), description: t('profit_calculator_desc'), delay: 700 },
+    { icon: Calendar, title: t('seasonal_alerts'), description: t('seasonal_alerts_desc'), delay: 800 },
+    { icon: Target, title: t('demand_forecasting'), description: t('demand_forecasting_desc'), delay: 900 },
+    { icon: Bell, title: t('price_alerts'), description: t('price_alerts_desc'), delay: 1000 }
   ];
 
   return (
     <div>
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20">
+      <section className="bg-gradient-to-r from-[#767922] to-[#214B24] text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <Sparkles className="w-16 h-16 mx-auto mb-4 opacity-90" />
           <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-in">{t('features_title')}</h1>
           <p className="text-xl max-w-2xl mx-auto opacity-90">
-            Discover how Harvest Horizon can transform your farming experience with cutting-edge technology
+            {t('discover_text')}
           </p>
         </div>
       </section>
 
-      {/* Features Grid */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-[#FDFCFB]">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {allFeatures.map((feature, index) => (
@@ -47,20 +45,19 @@ const FeaturesPage = () => {
         </div>
       </section>
 
-      {/* Technology Stack */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gradient-to-b from-[#F5F2EA] to-[#FDFCFB]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Powered By Advanced Technology</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Our platform leverages cutting-edge technologies to deliver accurate and actionable insights
+            <h2 className="text-3xl font-bold text-[#214B24] mb-4">{t('tech_stack_title')}</h2>
+            <p className="text-[#8E946F] max-w-2xl mx-auto">
+              {t('tech_stack_desc')}
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {['Machine Learning', 'Big Data Analytics', 'Real-time Processing', 'Cloud Computing'].map((tech, index) => (
-              <div key={index} className="text-center p-4 bg-gradient-to-br from-primary-50 to-green-50 rounded-xl">
-                <Shield className="w-8 h-8 text-primary-600 mx-auto mb-2" />
-                <p className="font-semibold">{tech}</p>
+              <div key={index} className="text-center p-4 bg-[#EADDB0] rounded-xl hover:scale-105 transition-transform">
+                <Shield className="w-8 h-8 text-[#214B24] mx-auto mb-2" />
+                <p className="font-semibold text-[#214B24]">{tech}</p>
               </div>
             ))}
           </div>

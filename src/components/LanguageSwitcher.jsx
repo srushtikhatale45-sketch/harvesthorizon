@@ -17,20 +17,20 @@ const LanguageSwitcher = () => {
 
   return (
     <div className="relative group">
-      <button className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-all duration-300">
-        <Languages size={18} className="text-gray-600" />
-        <span className="text-sm font-medium text-gray-700">
+      <button className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-[#EADDB0] hover:bg-[#D4C48A] transition-all duration-300">
+        <Languages size={18} className="text-[#214B24]" />
+        <span className="text-sm font-medium text-[#214B24]">
           {languages.find(lang => lang.code === i18n.language)?.name || 'English'}
         </span>
       </button>
       
-      <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+      <div className="absolute right-0 mt-2 w-48 bg-[#FDFCFB] rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 border border-[#EADDB0]">
         {languages.map((lang) => (
           <button
             key={lang.code}
             onClick={() => changeLanguage(lang.code)}
-            className={`w-full flex items-center justify-between px-4 py-3 hover:bg-gray-50 transition-colors ${
-              i18n.language === lang.code ? 'text-primary-600 bg-primary-50' : 'text-gray-700'
+            className={`w-full flex items-center justify-between px-4 py-3 hover:bg-[#EADDB0] transition-colors ${
+              i18n.language === lang.code ? 'text-[#214B24] bg-[#EADDB0]' : 'text-[#767922]'
             }`}
           >
             <div className="flex items-center space-x-3">
