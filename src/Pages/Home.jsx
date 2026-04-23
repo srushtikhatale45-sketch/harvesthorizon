@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { ArrowRight, TrendingUp, Shield, Clock, BarChart3, Sprout } from 'lucide-react';
 import FeatureCard from '../components/FeatureCard';
 
-const HomePage = () => {
+const Home = () => {
   const { t } = useTranslation();
 
   const features = [
@@ -116,4 +116,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;
