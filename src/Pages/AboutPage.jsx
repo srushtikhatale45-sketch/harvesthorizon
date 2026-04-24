@@ -12,10 +12,10 @@ const AboutPage = () => {
   ];
 
   const team = [
-    { name: 'Dr. Rajesh Kumar', role: 'Agricultural Expert', icon: Users },
-    { name: 'Priya Sharma', role: 'Data Scientist', icon: TrendingUp },
-    { name: 'Amit Patel', role: 'Tech Lead', icon: Shield },
-    { name: 'Sneha Desai', role: 'Farmer Liaison', icon: Award }
+    { name: 'Rudrani Jangale', role: 'Cloud Expert', icon: Users },
+    { name: ' Srushti Khatale', role: 'Software Developer', icon: Shield },
+    { name: 'Riya Anthal', role: 'Data Analyst', icon: TrendingUp },
+    { name: 'Srushti Kshirsagar', role: 'DevOps Engineer', icon: Award }
   ];
 
   return (
