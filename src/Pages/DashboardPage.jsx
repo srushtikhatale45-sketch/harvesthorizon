@@ -34,6 +34,8 @@ const DashboardPage = () => {
               sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-popups-to-escape-sandbox"
             ></iframe>
           </div>
+          
+          
         </div>
 
         {/* Alternative: Open in New Window Button */}
