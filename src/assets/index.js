@@ -4,3 +4,5 @@ import bg from "./images/bg.png";
 export { bg };
 import logoh from "./images/logoh.png";
 export { logoh };
+import Recording from "./images/Recording.mp4";
+export { Recording };
